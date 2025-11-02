@@ -62,7 +62,7 @@ Create a new Unity project with the above requirements before getting started.
 You will need to install three packages in sequence here:
 
 - Unity Project Patcher: `https://github.com/nomnomab/unity-project-patcher.git`
-- Unity Project Patcher BepInEx: `https://github.com/nomnomab/unity-project-patcher-bepinex.git`
+- Unity Project Patcher BepInEx: `https://github.com/Kesomannen/unity-project-patcher-bepinex.git#update-mono-cecil`
   - [Can be disabled](#disabling-bepinex-usage)
 - This project
 
