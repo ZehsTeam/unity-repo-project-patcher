@@ -30,22 +30,6 @@ MonoBehaviour:
     outputPath: 
     exclude: 0
   - key: 
-    sourceName: Mono.Security.dll
-    outputPath: 
-    exclude: 0
-  - key: 
-    sourceName: mscorlib.dll
-    outputPath: 
-    exclude: 0
-  - key: 
-    sourceName: netstandard.dll
-    outputPath: 
-    exclude: 0
-  - key: 
-    sourceName: Newtonsoft.Json.dll
-    outputPath: 
-    exclude: 0
-  - key: 
     sourceName: SingularityGroup.HotReload.Runtime.dll
     outputPath: 
     exclude: 0
