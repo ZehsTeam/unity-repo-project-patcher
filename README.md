@@ -54,7 +54,7 @@ Make sure you have the following before using the tool in any way:
 
 ### Unity Project
 
-- Requires [Unity 2022.3.21](https://unity.com/releases/editor/whats-new/2022.3.21)
+- Requires [Unity 2022.3.62](https://unity.com/releases/editor/whats-new/2022.3.62f3)
 - Unity built-in render pipeline
 
 Create a new Unity project with the above requirements before getting started.
@@ -62,7 +62,7 @@ Create a new Unity project with the above requirements before getting started.
 You will need to install three packages in sequence here:
 
 - Unity Project Patcher: `https://github.com/nomnomab/unity-project-patcher.git`
-- Unity Project Patcher BepInEx: `https://github.com/nomnomab/unity-project-patcher-bepinex.git`
+- Unity Project Patcher BepInEx: `https://github.com/Kesomannen/unity-project-patcher-bepinex.git#update-mono-cecil`
   - [Can be disabled](#disabling-bepinex-usage)
 - This project
 
@@ -83,7 +83,7 @@ You will need to install three packages in sequence here:
 
 ### Installing this Game Wrapper
 
-The same steps as previously, just with `https://github.com/Kesomannen/unity-repo-project-patcher.git`
+The same steps as previously, just with `https://github.com/ZehsTeam/unity-repo-project-patcher.git`
 
 ### Installing the BepInEx Wrapper
 
