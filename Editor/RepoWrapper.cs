@@ -12,6 +12,7 @@ namespace Kesomannen.RepoProjectPatcher.Editor {
             stepPipeline.InsertLast(new FixES3Step());
             stepPipeline.InsertLast(new GeneratePhotonAssembliesStep());
             stepPipeline.InsertLast(new ReplaceAssetsStep());
+            //stepPipeline.InsertLast(new UpdatePlayModeStep());
             //stepPipeline.InsertLast(new ReplaceShadersStep());
         }
     }

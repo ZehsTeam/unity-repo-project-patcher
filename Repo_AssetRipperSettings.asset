@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 916d8141f5694455a1684411a2d0c2ac, type: 3}
   m_Name: Repo_AssetRipperSettings
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier:
   _folderMappings:
   - key: AnimationClip
     sourceName: AnimationClip
@@ -169,6 +169,8 @@ MonoBehaviour:
   - Scripts\PhotonVoice.PUN
   _filesToExcludeFromCopy:
   - Localization\Locales\*
+  - Shader\Hidden_PostProcessing_*
+  - Shader\Hidden_Shader Graph_FallbackError.shader
   _foldersToExcludeFromRead:
   - Scripts\Unity.Burst
   - Scripts\Unity.Burst.Unsafe
@@ -211,4 +213,4 @@ MonoBehaviour:
       terrainExportMode: 0
       textExportMode: 2
       saveSettingsToDisk: 0
-  _customBuildUrl: https://github.com/Kesomannen/AssetRipper/releases/download/v1.1.13-patcher/Release.zip
+  _customBuildUrl: https://github.com/1A3Dev/AssetRipper/releases/download/v1.1.15-pre.1/Release.zip

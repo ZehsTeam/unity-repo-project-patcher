@@ -11,10 +11,12 @@ public class PrefabRef<T> where T : UnityEngine.Object {
 	[SerializeField] private string prefabName;
 	[SerializeField] private string resourcePath;
 	[SerializeField] private AssetBundle bundle;
+	[SerializeField] private bool cachedFinalized = true;
 
 	public string PrefabName => prefabName;
 	public string ResourcePath => bundle ? $"AssetBundles/{bundle.name}/{resourcePath}" : resourcePath;
 	public AssetBundle Bundle => bundle;
+	public bool IsFinalized => cachedFinalized;
 
 	public T Prefab {
 		get {
