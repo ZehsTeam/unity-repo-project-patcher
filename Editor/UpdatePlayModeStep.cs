@@ -5,9 +5,10 @@ using UnityEditor;
 namespace Kesomannen.RepoProjectPatcher.Editor {
     public struct UpdatePlayModeStep : IPatcherStep {
         public UniTask<StepResult> Run() {
-            if (!EditorSettings.enterPlayModeOptionsEnabled || (EditorSettings.enterPlayModeOptions & EnterPlayModeOptions.DisableSceneReload) != 0) {
-                EditorSettings.enterPlayModeOptionsEnabled = true;
-                EditorSettings.enterPlayModeOptions &= ~EnterPlayModeOptions.DisableSceneReload;
+            const EnterPlayModeOptions skipFlags = EnterPlayModeOptions.DisableDomainReload | EnterPlayModeOptions.DisableSceneReload;
+
+            if (EditorSettings.enterPlayModeOptionsEnabled && (EditorSettings.enterPlayModeOptions & skipFlags) != 0) {
+                EditorSettings.enterPlayModeOptions &= ~skipFlags;
                 AssetDatabase.SaveAssets();
             }
             return UniTask.FromResult(StepResult.Success);
