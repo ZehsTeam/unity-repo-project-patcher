@@ -110,6 +110,23 @@ Estimated patch durations:
 
 These can vary wildly depending on system speed and project size.
 
+## Original game files
+
+The game's original shaders and localization files are downloaded from
+[REPOAssets](https://github.com/Semiwork-Studios-AB/REPOAssets). See [`REPOAssets~`](REPOAssets~/README.md) for using
+local files instead.
+
+- Shaders replace the ripped ones (matched by shader name). Shaders whose originals aren't public use the custom
+  replacements in `Shaders~` instead. To re-run, use `Tools > R.E.P.O. Project Patcher > Patch Assets > Shaders`.
+- String tables, locales and `LocalizedAsset`s are restored with their original GUIDs, so they work in-editor and resolve
+  to the game's tables in mod bundles. To re-run, use `Tools > R.E.P.O. Project Patcher > Patch Assets > Localization`.
+
+## Localization
+
+To add your own strings, create a String Table Collection (`Window > Asset Management > Localization Tables`) with a
+unique name inside your mod's folder and reference its entries from `LocalizedAsset`s. The REPOLib SDK bundles the
+tables automatically and REPOLib registers them in-game. Locales you don't translate fall back to English.
+
 ## Credits
 
 Replacement shaders made by [Orton](https://linktr.ee/ortonlonggaming).
