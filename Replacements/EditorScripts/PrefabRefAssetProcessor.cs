@@ -112,7 +112,7 @@ public class PrefabRefAssetProcessor : AssetPostprocessor, IPreprocessBuildWithR
         }
     }
 
-    private static int UpdatePrefabRefs(HashSet<string> targetGuids = null) {
+    private static int UpdatePrefabRefs(HashSet<string> targetGuids = null, bool modAssetsOnly = false) {
         List<UnityEngine.Object> dirtyAssets = new();
         List<GameObject> dirtyPrefabs = new();
 
@@ -121,6 +121,7 @@ public class PrefabRefAssetProcessor : AssetPostprocessor, IPreprocessBuildWithR
                 .Concat(AssetDatabase.FindAssets("t:Prefab"))
                 .Distinct()
                 .Select(AssetDatabase.GUIDToAssetPath)
+                .Where(p => !modAssetsOnly || !IsGameAsset(p))
                 .Where(System.IO.File.Exists)
                 .ToList();
 
@@ -173,10 +174,17 @@ public class PrefabRefAssetProcessor : AssetPostprocessor, IPreprocessBuildWithR
     }
 
     static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths) {
-        if(movedAssets.Length == 0) return;
+        var movedGuids = new HashSet<string>(movedAssets
+            .Where(x => !IsGameAsset(x) && !AssetDatabase.IsValidFolder(x))
+            .Select(AssetDatabase.AssetPathToGUID)
+            .Where(x => !string.IsNullOrEmpty(x)));
+        if(movedGuids.Count == 0) return;
 
-        var movedGuids = new HashSet<string>(movedAssets.Select(AssetDatabase.AssetPathToGUID).Where(x => !string.IsNullOrEmpty(x)));
-        EditorApplication.delayCall += () => UpdatePrefabRefs(movedGuids);
+        EditorApplication.delayCall += () => UpdatePrefabRefs(movedGuids, modAssetsOnly: true);
+    }
+
+    static bool IsGameAsset(string path) {
+        return path.StartsWith(PrefabRefPaths.GameFolder, StringComparison.OrdinalIgnoreCase);
     }
 
     [MenuItem("Prefabs/Update All PrefabRef")]
