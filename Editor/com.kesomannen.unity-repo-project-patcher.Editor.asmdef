@@ -4,7 +4,11 @@
     "references": [
         "GUID:419b14fad59f488e9e1a3c798cff9f89",
         "GUID:d622a80a03e90ec48afe2a9c4bacce98",
-        "GUID:f51ebe6a0ceec4240a699833d6309b23"
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "Unity.Localization",
+        "Unity.Localization.Editor",
+        "Unity.Addressables",
+        "Unity.Addressables.Editor"
     ],
     "includePlatforms": [
         "Editor"
@@ -15,6 +19,12 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.localization",
+            "expression": "1.0.0",
+            "define": "REPO_PATCHER_LOCALIZATION"
+        }
+    ],
     "noEngineReferences": false
 }
