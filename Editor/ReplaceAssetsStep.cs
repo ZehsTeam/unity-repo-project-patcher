@@ -84,7 +84,15 @@ namespace Kesomannen.RepoProjectPatcher.Editor {
                 if (name != null) projectShaders.TryAdd(name, path);
             }
 
-            var count = CopyShaders(Path.Combine(RepoAssets.GetPackageRoot(), CustomShadersFolderName), projectShaders, "custom replacements");
+            var count = 0;
+
+            var tmpFolder = TmpShaders.GetFolder();
+            if (tmpFolder != null) {
+                count += CopyShaders(tmpFolder, projectShaders, "TextMeshPro", onlyExisting: true);
+                count += CopyIncludes(tmpFolder);
+            }
+
+            count += CopyShaders(Path.Combine(RepoAssets.GetPackageRoot(), CustomShadersFolderName), projectShaders, "custom replacements");
 
             var repoAssetsFolder = RepoAssets.GetFolder("Shaders");
             if (repoAssetsFolder != null) {
@@ -94,18 +102,31 @@ namespace Kesomannen.RepoProjectPatcher.Editor {
             return count;
         }
 
-        static int CopyShaders(string sourceFolder, Dictionary<string, string> projectShaders, string sourceName) {
+        static int CopyIncludes(string sourceFolder) {
+            var count = 0;
+            foreach (var srcPath in Directory.GetFiles(sourceFolder)) {
+                var ext = Path.GetExtension(srcPath);
+                if (ext != ".cginc" && ext != ".hlsl") continue;
+
+                File.Copy(srcPath, Path.Combine(GameShadersFolder, Path.GetFileName(srcPath)), overwrite: true);
+                count++;
+            }
+            return count;
+        }
+
+        static int CopyShaders(string sourceFolder, Dictionary<string, string> projectShaders, string sourceName, bool onlyExisting = false) {
             if (!Directory.Exists(sourceFolder)) return 0;
 
             var count = 0;
             foreach (var srcPath in Directory.GetFiles(sourceFolder, "*.shader", SearchOption.AllDirectories)) {
                 var name = GetShaderName(srcPath);
                 if (name == null) {
-                    Debug.LogWarning($"Could not read the shader name of {srcPath}");
+                    if (!onlyExisting) Debug.LogWarning($"Could not read the shader name of {srcPath}");
                     continue;
                 }
 
                 if (!projectShaders.TryGetValue(name, out var destPath)) {
+                    if (onlyExisting) continue;
                     destPath = Path.Combine(GameShadersFolder, Path.GetFileName(srcPath));
                     if (File.Exists(destPath)) {
                         Debug.LogWarning($"Skipping shader \"{name}\" because {destPath} already contains a different shader");

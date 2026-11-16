@@ -117,7 +117,8 @@ The game's original shaders and localization files are downloaded from
 local files instead.
 
 - Shaders replace the ripped ones (matched by shader name). Shaders whose originals aren't public use the custom
-  replacements in `Shaders~` instead. To re-run, use `Tools > R.E.P.O. Project Patcher > Patch Assets > Shaders`.
+  replacements in `Shaders~` instead. TextMeshPro's shaders (ripped as dummies) are replaced with the real ones from
+  the ugui package's `TMP Essential Resources`. To re-run, use `Tools > R.E.P.O. Project Patcher > Patch Assets > Shaders`.
 - String tables, locales and `LocalizedAsset`s are restored with their original GUIDs, so they work in-editor and resolve
   to the game's tables in mod bundles. To re-run, use `Tools > R.E.P.O. Project Patcher > Patch Assets > Localization`.
 
