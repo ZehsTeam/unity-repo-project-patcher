@@ -41,6 +41,10 @@ MonoBehaviour:
     sourceName: Font
     outputPath: Fonts\TextMeshPro
     exclude: 0
+  - key: Icons
+    sourceName: Icons
+    outputPath: Textures\Icons
+    exclude: 0
   - key: LightingSettings
     sourceName: LightingSettings
     outputPath: LightingSettings
@@ -65,8 +69,8 @@ MonoBehaviour:
     sourceName: NavMeshData
     outputPath: Scenes\NavMeshData
     exclude: 0
-  - key: PhysicMaterial
-    sourceName: PhysicMaterial
+  - key: PhysicsMaterial
+    sourceName: PhysicsMaterial
     outputPath: PhysicsMaterials
     exclude: 0
   - key: GameObject
@@ -136,12 +140,13 @@ MonoBehaviour:
   - AudioMixerController
   - Editor
   - Font
+  - Icons
   - LightingSettings
   - Localization
   - Material
   - Mesh
   - GameObject
-  - PhysicMaterial
+  - PhysicsMaterial
   - Resources
   - Settings
   - Scenes
@@ -185,10 +190,9 @@ MonoBehaviour:
   - InputManager.asset
   - AudioManager.asset
   - DelayedCallManager.asset
-  - DynamicsManager.asset
   - EditorBuildSettings.asset
   - EditorSettings.asset
-  - GraphicsSettngs.asset
+  - GraphicsSettings.asset
   - Physics2DSettings.asset
   - ProjectSettings.asset
   - StreamingManager.asset
